@@ -3,14 +3,14 @@ version: '2.1'
 services:
     bob:
         build: ./bob
-        image: naumachia/mitm/bob
+        image: naumachia/mitm.bob
         restart: unless-stopped
         environment:
             - CTF_FLAG=i_gOT_the_FeELIN_SoMEThinG_ainT_rIGHt
 
     alice:
         build: ./alice
-        image: naumachia/mitm/alice
+        image: naumachia/mitm.alice
         restart: unless-stopped
         depends_on:
             - bob

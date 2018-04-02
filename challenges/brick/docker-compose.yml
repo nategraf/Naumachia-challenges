@@ -10,14 +10,14 @@ services:
                 NAUMOTP_SECRET: CPE7C5JFZEYRBDL6X25ISBOQK2PE2A54F3U3MQOX6IVNADWNXYEA
                 SANDBOX_REPO: https://github.com/catdaddy97/catfacts.git
                 CTF_FLAG: gigem{brick_walls_dont_help_if_you_hold_the_door_open}
-        image: naumachia/login-otp/shell
+        image: naumachia/login-otp.shell
         expose:
             - "23"
         cap_add:
             - NET_BIND_SERVICE
 
     client:
-        image: naumachia/login/client
+        image: naumachia/login.client
         command: [python, /app/client.py]
         environment:
             NAUMOTP_SECRET: CPE7C5JFZEYRBDL6X25ISBOQK2PE2A54F3U3MQOX6IVNADWNXYEA

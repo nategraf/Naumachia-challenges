@@ -9,7 +9,7 @@ services:
                 PASSWORD: I8elieve1CanFly
                 SANDBOX_REPO: https://github.com/nategraf/mini-ipam-driver
                 CTF_FLAG: gigem{trust_on_the_internet_is_a_way_to_get_eaten}
-        image: naumachia/login-ip/shell
+        image: naumachia/login-ip.shell
         expose:
             - "23"
         cap_add:
@@ -18,7 +18,7 @@ services:
             default:
 
     client:
-        image: naumachia/login/client
+        image: naumachia/login.client
         command: [python, /app/client.py]
         restart: unless-stopped
         environment:

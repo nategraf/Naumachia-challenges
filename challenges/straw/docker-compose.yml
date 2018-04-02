@@ -9,7 +9,7 @@ services:
                 PASSWORD: OinkPassword0ink
                 SANDBOX_REPO: https://github.com/nategraf/wrastle
                 CTF_FLAG: gigem{straw_houses_can_barely_stand_the_breeze}
-        image: naumachia/login/shell
+        image: naumachia/login.shell
         expose:
             - "23"
         cap_add:
@@ -21,7 +21,7 @@ services:
 
     client:
         build: ./client
-        image: naumachia/login/client
+        image: naumachia/login.client
         command: [python, /app/client.py]
         restart: unless-stopped
         environment:

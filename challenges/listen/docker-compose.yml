@@ -3,7 +3,7 @@ version: '2.1'
 services:
     arthur:
         build: ./actor
-        image: naumachia/listen/actor
+        image: naumachia/listen.actor
         env_file: .env
         environment:
             - CHARACTER=Arthur

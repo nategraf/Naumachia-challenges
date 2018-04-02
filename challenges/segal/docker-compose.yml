@@ -3,7 +3,7 @@ version: '2.1'
 services:
     catfacts:
         build: ./catfacts/build
-        image: naumachia/ntp-rollback/catfacts
+        image: naumachia/ntp-rollback.catfacts
         networks:
             default:
                 aliases:
@@ -32,7 +32,7 @@ services:
 
     client:
         build: ./client/build
-        image: naumachia/ntp-rollback/client
+        image: naumachia/ntp-rollback.client
         env_file: chal.env
         command: [python, /app/client.py]
         tty: true
