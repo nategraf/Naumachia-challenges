@@ -2,9 +2,9 @@
 Naumachia Challenges
 ====================
 
-Welcome to the open-source repository for `Naumachia <https://github.com/nategraf/Naumachia>`_ challenges!
+Welcome to the open-source repository for `Naumachia <https://github.com/nategraf/Naumachia>`_ challenges! If you have some challenge ideas and/or code to contribute, I would love to see it!
 
-All of the challenges in this repository can be played live at `naumachiactf.com <https://naumachiactf.com>`_!
+All of the challenges in this repository can be played live at `naumachiactf.com <https://naumachiactf.com>`_, and you can join the `Discord <https://discordapp.com/invite/gH9ZgeT>`_ channel to chat!
 
 The challenges in this repository are challenges I have written for past CTFs and open-sourced after. It's my hope that this is helpful to developers who are interested in writing their own challenges or just curious as to how it all works.
 
