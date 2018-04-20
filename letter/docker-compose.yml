@@ -1,0 +1,25 @@
+version: '2.1'
+
+services:
+    mailserver:
+        build: ./mailserver
+        image: naumachia/letter.mailserver
+        cap_add:
+            - NET_BIND_SERVICE
+        ports:
+            - "25"
+        restart: unless-stopped
+
+    client:
+        build: ./client
+        image: naumachia/letter.client
+        environment:
+            SMTP_ADDR: mailserver
+        env_file: chal.env
+        restart: unless-stopped
+
+networks:
+    default:
+        internal: true
+        ipam:
+            driver: mini

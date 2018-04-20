@@ -1,0 +1,9 @@
+topchef:
+    password: zsuuhdlljp4hkjrxoxzqf34xs63hjv4xko6lh2fl6wmx7wtlum2a
+    permissions: elradfmw
+    home: /home/topchef/recipes
+
+anonymous:
+    password: null
+    permissions: elr
+    home: /home/topchef/recipes/public

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% set active_page = "negozio" %}
+{% block content -%}
+{% for rose in roses -%}
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+          <div class="bg-faded p-5 d-flex {{ "mr-auto" if (loop.index % 2 == 0) else "ml-auto" }} rounded">
+          <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">{{ rose.descriptor }}</span>
+            <span class="section-heading-lower">{{ rose.name }}</span>
+            <div class="text-right">
+                <button class="btn btn-acquistare mr-1">Acquistare</button>
+                <span class="badge prezzo">{{ '%0.2f' | format(rose.price|float)}} €/stelo</span>
+            </div>
+          </h2>
+        </div>
+      </div>
+      <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ rose.img }}" alt="Foto di {{ rose.name }}">
+      <div class="product-item-description d-flex mr-auto">
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

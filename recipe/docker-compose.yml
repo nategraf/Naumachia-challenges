@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+    auth:
+        build: ./auth
+        image: naumachia/recipe.auth
+        env_file: chal.env
+        restart: unless-stopped
+
+    ftp:
+        build: ./ftp
+        image: naumachia/recipe.ftp
+        env_file: chal.env
+        environment:
+            AUTH_ADDR: auth
+            AUTH_PORT: 4505
+        cap_add:
+            - NET_BIND_SERVICE
+        ports:
+            - "21"
+        restart: unless-stopped
+
+networks:
+    default:
+        internal: true
+        ipam:
+            driver: mini

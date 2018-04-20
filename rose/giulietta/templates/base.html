@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% block head -%}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <title>Rose di Giulietta</title>
+  
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+    <!-- Custom fonts for this template -->
+    <link href="static/fonts/raleway.css" rel="stylesheet">
+    <link href="static/fonts/lora.css" rel="stylesheet">
+  
+    <!-- Custom styles for this template -->
+    <link href="static/css/rose.css" rel="stylesheet">
+    <link href="static/img/favicon.ico" rel="icon" type="image/x-icon" />
+  </head>
+  {% endblock -%}
+  {% block title -%}
+  <body>
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      
+      <span class="site-heading-lower"><b>Rose</b> di Giulietta</span>
+    </h1>
+  {% endblock -%}
+  {% block nav -%}
+    <!-- Navigation -->
+    {% set navigations = ['home', 'informazioni', 'negozio'] + (['amministratore'] if current_user.admin else []) -%}
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-expanded font-weight-bold d-lg-none" href="#"><b>Rose</b> di Giulietta</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse center-block navbar-collapse" id="navbarResponsive">
+          {% if current_user.is_authenticated -%}
+          <span class="navbar-brand">Ciao, {{ current_user.name }}</span>
+          {% endif -%}
+          <ul class="navbar-nav text-uppercase mx-auto">
+            {% for nav in navigations -%}
+            <li class="nav-item px-lg-4 {% if nav == active_page -%} active {%- endif -%}">
+                <a class="nav-link text-uppercase text-expanded" href="/{{ nav }}">{{ nav }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            {% if current_user.is_authenticated -%}
+            <a class="btn btn-secondary" href="/esci">Esci</a>
+            {% else -%}
+            <a class="btn btn-primary" href="/accedi">Accedi</a>
+            {% endif -%}
+          </form>
+        </div>
+      </div>
+    </nav>
+    {% endblock -%}
+    {% block content %}{% endblock -%}
+    {% block footer -%}
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Diritto d'autore
+ © Giulietta Montague 2018</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    {% endblock -%}
+</body></html>

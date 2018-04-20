@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% set active_page = "accedi" %}
+{% block content -%}
+<section class="page-section clearfix">
+  <div class="container">
+    <div class="bg-faded p-5 rounded col-md-6 center-block mr-auto ml-auto">
+      <h2 class="section-heading mb-4">Accedi</h2>
+
+      {% with messages = get_flashed_messages() %}
+      {% for message in messages %}
+      <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          {{ message }}
+      </div>
+      {% endfor %}
+      {% endwith %}
+
+      <form method="POST" action="/accedi">
+        <div class="form-group">
+          {{ login_form.user(placeholder="Username", class_="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ login_form.password(placeholder="Password", class_="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Entra</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

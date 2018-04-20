@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+    pwned:
+        build: ./pwned
+        image: naumachia/scraps.pwned
+        restart: unless-stopped
+
+networks:
+    default:
+        internal: true
+        ipam:
+            driver: mini
