@@ -39,7 +39,7 @@ services:
         hostname: admin.shadow
         env_file: chal.env
         environment:
-            HTTP_URL: http://rosedigiulietta.ethihak
+            HTTP_URL: http://rosedigiulietta.naum
             NAMESERVER: ns.shadow
         << : &bot
             dns: 127.0.0.40
@@ -58,7 +58,7 @@ services:
         environment:
             ROSE_USER: luca
             ROSE_PASS: aerosmith1
-            HTTP_URL: http://rosedigiulietta.ethihak
+            HTTP_URL: http://rosedigiulietta.naum
             NAMESERVER: ns.shadow
         << : *bot
 
@@ -71,7 +71,7 @@ services:
         environment:
             ROSE_USER: moroder
             ROSE_PASS: mazda626
-            HTTP_URL: http://rosedigiulietta.ethihak
+            HTTP_URL: http://rosedigiulietta.naum
             NAMESERVER: ns.shadow
         << : *bot
 
@@ -87,7 +87,7 @@ services:
         networks:
             default:
         environment:
-            - ZONE_DOMAIN=ethihak
+            - ZONE_DOMAIN=naum
             - ZONE_HOSTS=rosedigiulietta
         restart: unless-stopped
 

@@ -1,1 +1,1 @@
-Ethihak{last_one_out_close_the_door}
+flag{last_one_out_close_the_door}

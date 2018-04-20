@@ -4,39 +4,57 @@ challenges:
         files:
             - listen/docker-compose.yml
             - common/docker-compose.yml
-        commonname: 192.168.254.220
+
+    middle:
+	port: 2001
+	files:
+            - middle/docker-compose.yml
+            - common/docker-compose.yml
+
+    straw:
+	port: 2002
+        files:
+            - straw/docker-compose.yml
+            - common/docker-compose.yml
+
+    sticks:
+        port: 2003
+        files:
+            - sticks/docker-compose.yml
+            - common/docker-compose.yml
+
+    brick:
+        port: 2004
+        files:
+            - brick/docker-compose.yml
+            - common/docker-compose.yml
+
+    segal:
+        port: 2005
+        files:
+            - segal/docker-compose.yml
+            - common/docker-compose.yml
 
     rose:
-        port: 2001
+        port: 2006
         files:
             - rose/docker-compose.yml
             - common/docker-compose.yml
-        commonname: 192.168.254.220
         
     scraps:
-        port: 2002
+        port: 2007
         files:
             - scraps/docker-compose.yml
             - common/docker-compose.yml
-        commonname: 192.168.254.220
 
     recipe:
-        port: 2003
+        port: 2008
         files:
             - recipe/docker-compose.yml
             - common/docker-compose.yml
-        commonname: 192.168.254.220
 
     letter:
-        port: 2004
+        port: 2009
         files:
             - letter/docker-compose.yml
             - common/docker-compose.yml
-        commonname: 192.168.254.220
-
-    example:
-        port: 2005
-        files:
-            - example/docker-compose.yml
-            - common/docker-compose.yml
-        commonname: 192.168.254.220
