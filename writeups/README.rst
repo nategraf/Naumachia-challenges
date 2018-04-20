@@ -18,3 +18,15 @@ Segal's Law
   * `wutwut <https://kebechet.net/post/10/Segals_Law_-_TAMUCTF_2018>`_
 
 For each challenge I also have written up a quick description of how to generally solve the challenge. Each challenge has an rst file in this directory
+
+Solutions:
+ * `Stop and Listen <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/listen.rst>`_
+ * `Stuck in the Middle <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/middle.rst>`_
+ * `Straw House <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/straw.rst>`_
+ * `Stick House <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/sticks.rst>`_
+ * `Brick House <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/brick.rst>`_
+ * `Segal's Law <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/segal.rst>`_
+ * `A Rose by Any Other IP <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/rose.rst>`_
+ * `Secret Recipe <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/recipe.rst>`_
+ * `Open Letter <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/letter.rst>`_
+ * `Table Scraps <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups/scraps.rst>`_
