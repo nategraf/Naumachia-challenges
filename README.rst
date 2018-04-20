@@ -20,6 +20,8 @@ Challenges:
  * `Open Letter <https://github.com/nategraf/Naumachia-challenges/tree/master/letter>`_
  * `Table Scraps <https://github.com/nategraf/Naumachia-challenges/tree/master/scraps>`_
 
+**Writeups** written by players can be found in the `writeups folder <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups>`
+
 Note:
   Many of these challenges use a network IPAM driver called "mini". That refers to my `mini-ipam driver <https://github.com/nategraf/mini-ipam-driver>`_ which is designed to allocate small subnets (as opposed to the default which allocates /20 and /24 subnets and runs out quickly).
   You may either remove the driver line for testing and small deployments, or download and run the mini-ipam driver on your host
