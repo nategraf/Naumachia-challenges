@@ -1,0 +1,41 @@
+version: '2.1'
+
+services:
+    bob:
+        build: ./bob
+        image: naumachia/mitm-arpon/bob
+        volumes:
+            - arpon:/etc/arpon
+        environment:
+            - CTF_FLAG=67afB27edB18Fe33
+        sysctls:
+            net.ipv4.conf.eth0.arp_ignore: 8
+            net.ipv4.conf.eth0.arp_accept: 0
+        cap_add:
+            - NET_ADMIN
+            - NET_RAW
+
+    alice:
+        build: ./alice
+        image: naumachia/mitm-arpon/alice
+        volumes:
+            - arpon:/etc/arpon
+        depends_on:
+            - bob
+        environment:
+            - CTF_FLAG=67afB27edB18Fe33
+        sysctls:
+            net.ipv4.conf.eth0.arp_ignore: 8
+            net.ipv4.conf.eth0.arp_accept: 0
+        cap_add:
+            - NET_ADMIN
+            - NET_RAW
+
+volumes:
+    arpon:
+
+networks:
+    default:
+        internal: true
+        ipam:
+            driver: mini

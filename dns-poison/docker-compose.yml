@@ -1,0 +1,71 @@
+version: '2.1'
+
+services:
+    catfacts:
+        build: ./catfacts/build
+        image: naumachia/dns-poison/catfacts
+        networks:
+            hidden:
+                aliases:
+                    - "catfacts.docker"
+        expose: 
+            - "443"
+        env_file: chal.env
+        command: [python, /app/catfacts.py]
+        volumes:
+            - ipshare:/tmp/ipshare
+
+    router:
+        image: alpine
+        sysctls:
+            - net.ipv4.ip_forward=1
+        networks:
+            default:
+            hidden:
+        command: ["tail", "-f", "/dev/null"]
+        volumes:
+            - ipshare:/tmp/ipshare
+
+    client:
+        build: ./client/build
+        image: naumachia/dns-poison/client
+        env_file: chal.env
+        command: [python, /app/client.py]
+        networks:
+            hidden:
+        volumes:
+            - ipshare:/tmp/ipshare
+
+    ns:
+        build: ./dns/build
+        image: naumachia/dns-poison/ns
+        networks:
+            default:
+                aliases:
+                    - "ns.docker"
+        expose:
+            - "53/udp"
+            - "53/tcp"
+        environment:
+            - WEBMIN_ENABLED=false
+            - ZONE_DOMAIN=naum
+            - ZONE_HOSTS=catfacts
+        volumes:
+            - ipshare:/tmp/ipshare
+
+volmues:
+    ipshare:
+
+networks:
+    default:
+        internal: true
+        ipam:
+            driver: mini
+            options:
+                CidrMaskLength: "29"
+    hidden:
+        internal: true
+        ipam:
+            driver: mini
+            options:
+                CidrMaskLength: "29"
