@@ -1,4 +1,0 @@
-flask
-flask-login
-Flask-WTF
-gunicorn
