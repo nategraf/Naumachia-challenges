@@ -5,7 +5,7 @@ import sys
 UDP_IP = 'bob'
 UDP_PORT = 5005
 
-flag = 'gigem{' + os.environ['CTF_FLAG'] + '}'
+flag = 'flag{' + os.environ['CTF_FLAG'] + '}'
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((UDP_IP, UDP_PORT))

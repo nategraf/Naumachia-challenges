@@ -35,7 +35,7 @@ while True:
         msg = flag
 
     try:
-        sock.sendto(("Is this the flag? gigem{{{0}}}".format(msg)).encode('utf-8'), (UDP_IP, UDP_PORT))
+        sock.sendto(("Is this the flag? flag{{{0}}}".format(msg)).encode('utf-8'), (UDP_IP, UDP_PORT))
     except Exception as e:
         print(e)
         pass

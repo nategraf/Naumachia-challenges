@@ -8,7 +8,7 @@ services:
                 USERNAME: piggy
                 PASSWORD: OinkPassword0ink
                 SANDBOX_REPO: https://github.com/nategraf/wrastle
-                CTF_FLAG: gigem{straw_houses_can_barely_stand_the_breeze}
+                CTF_FLAG: flag{straw_houses_can_barely_stand_the_breeze}
         image: naumachia/login.shell
         expose:
             - "23"

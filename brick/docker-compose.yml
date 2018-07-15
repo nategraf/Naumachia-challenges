@@ -9,7 +9,7 @@ services:
                 PASSWORD: ShesABrickH0use
                 NAUMOTP_SECRET: CPE7C5JFZEYRBDL6X25ISBOQK2PE2A54F3U3MQOX6IVNADWNXYEA
                 SANDBOX_REPO: https://github.com/catdaddy97/catfacts.git
-                CTF_FLAG: gigem{brick_walls_dont_help_if_you_hold_the_door_open}
+                CTF_FLAG: flag{brick_walls_dont_help_if_you_hold_the_door_open}
         image: naumachia/login-otp.shell
         expose:
             - "23"

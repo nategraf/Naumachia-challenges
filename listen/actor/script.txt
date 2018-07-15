@@ -157,4 +157,4 @@ Bridgekeeper: Well...I don't know...AAAAARRRRRRRRRRRRRRRGGGGGHHHH!!!
 
     Bedevere: And what is the flag, sire? 
 
-      Arthur: Simple Bedevere. It's gigem{ekky_ekke_ekke_zoo_boing_patang}
+      Arthur: Simple Bedevere. It's flag{ekky_ekke_ekke_zoo_boing_patang}
