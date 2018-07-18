@@ -1,3 +1,5 @@
+domain: naumachia.ddns.net
+
 challenges:
     listen:
         port: 2000
@@ -6,13 +8,13 @@ challenges:
             - common/docker-compose.yml
 
     middle:
-	port: 2001
-	files:
+        port: 2001
+        files:
             - middle/docker-compose.yml
             - common/docker-compose.yml
 
     straw:
-	port: 2002
+        port: 2002
         files:
             - straw/docker-compose.yml
             - common/docker-compose.yml
