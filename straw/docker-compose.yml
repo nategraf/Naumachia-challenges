@@ -16,8 +16,7 @@ services:
             - NET_BIND_SERVICE
         networks:
             default:
-                aliases:
-                    - "shell"
+                ipv4_address: 172.30.0.2
 
     client:
         build: ./client
@@ -27,9 +26,14 @@ services:
         environment:
             SHELL_USER: piggy
             SHELL_PASS: OinkPassword0ink
+        networks:
+            default:
+                ipv4_address: 172.30.0.3
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28

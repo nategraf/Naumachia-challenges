@@ -1,3 +1,5 @@
+eve: true
+
 domain: naumachia.ddns.net
 
 challenges:
@@ -5,58 +7,50 @@ challenges:
         port: 2000
         files:
             - listen/docker-compose.yml
-            - common/docker-compose.yml
 
     middle:
         port: 2001
         files:
             - middle/docker-compose.yml
-            - common/docker-compose.yml
 
     straw:
         port: 2002
         files:
             - straw/docker-compose.yml
-            - common/docker-compose.yml
 
     sticks:
         port: 2003
         files:
             - sticks/docker-compose.yml
-            - common/docker-compose.yml
 
     brick:
         port: 2004
         files:
             - brick/docker-compose.yml
-            - common/docker-compose.yml
 
     segal:
         port: 2005
         files:
             - segal/docker-compose.yml
-            - common/docker-compose.yml
 
-    rose:
-        port: 2006
-        files:
-            - rose/docker-compose.yml
-            - common/docker-compose.yml
+# Rose need some work. It currently eats up too many resources and is poorly constructed.
+#    rose:
+#        port: 2006
+#        files:
+#            - rose/docker-compose.yml
+#            - common/docker-compose.yml
         
     scraps:
         port: 2007
         files:
             - scraps/docker-compose.yml
-            - common/docker-compose.yml
 
     recipe:
         port: 2008
         files:
             - recipe/docker-compose.yml
-            - common/docker-compose.yml
 
     letter:
         port: 2009
         files:
             - letter/docker-compose.yml
-            - common/docker-compose.yml

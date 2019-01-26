@@ -5,6 +5,11 @@ services:
         build: ./auth
         image: naumachia/recipe.auth
         env_file: chal.env
+        expose:
+            - "4505"
+        networks:
+            default:
+                ipv4_address: 172.30.0.2
         restart: unless-stopped
 
     ftp:
@@ -16,12 +21,17 @@ services:
             AUTH_PORT: 4505
         cap_add:
             - NET_BIND_SERVICE
-        ports:
+        expose:
             - "21"
+        networks:
+            default:
+                ipv4_address: 172.30.0.3
         restart: unless-stopped
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28

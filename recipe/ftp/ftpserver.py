@@ -14,6 +14,7 @@ AUTH_ADDR = environ.get('AUTH_ADDR')
 AUTH_PORT = int(environ.get('AUTH_PORT'))
 SECRET = environ.get('SECRET')
 LOG_LEVEL = environ.get('LOG_LEVEL', 'INFO')
+TIMEOUT = float(environ.get('TIMEOUT', 15))
 
 _levelnum = getattr(logging, LOG_LEVEL.upper(), None)
 if not isinstance(_levelnum, int):
@@ -39,6 +40,7 @@ class RemoteAuthorizer:
 
     def exchange_jwt(self, obj):
         with socket(AF_INET, SOCK_STREAM) as sock:
+            sock.settimeout(TIMEOUT)
             sock.connect(self.remote)
             sock.send(jwt.encode(obj, None, None))
             return jwt.decode(sock.recv(2048), self.secret, algorithms=['HS256'])

@@ -16,6 +16,7 @@ services:
             - NET_BIND_SERVICE
         networks:
             default:
+                ipv4_address: 172.30.0.2
 
     client:
         image: naumachia/login.client
@@ -24,9 +25,14 @@ services:
         environment:
             SHELL_USER: piggy
             SHELL_PASS: I8elieve1CanFly
+        networks:
+            default:
+                ipv4_address: 172.30.0.3
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28

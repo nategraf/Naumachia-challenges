@@ -1,4 +1,4 @@
-FROM naumachia/common/python-arpon
+FROM naumachia/common.arpon:python
 
 COPY ./bob.py ./bob.py
 

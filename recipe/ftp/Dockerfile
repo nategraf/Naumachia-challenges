@@ -5,4 +5,5 @@ COPY ./recipes /home/topchef/recipes
 
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
+EXPOSE 21
 CMD ["python", "/app/ftpserver.py"]

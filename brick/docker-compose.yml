@@ -11,6 +11,9 @@ services:
                 SANDBOX_REPO: https://github.com/catdaddy97/catfacts.git
                 CTF_FLAG: flag{brick_walls_dont_help_if_you_hold_the_door_open}
         image: naumachia/login-otp.shell
+        networks:
+            default:
+                ipv4_address: 172.30.0.2
         expose:
             - "23"
         cap_add:
@@ -23,10 +26,15 @@ services:
             NAUMOTP_SECRET: CPE7C5JFZEYRBDL6X25ISBOQK2PE2A54F3U3MQOX6IVNADWNXYEA
             SHELL_USER: piggy
             SHELL_PASS: ShesABrickH0use
+        networks:
+            default:
+                ipv4_address: 172.30.0.3
         restart: unless-stopped
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28

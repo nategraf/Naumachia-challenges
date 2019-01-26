@@ -1,40 +1,61 @@
 version: '2.1'
 
 services:
-    arthur:
+    arthur: &knight
         build: ./actor
         image: naumachia/listen.actor
-        env_file: .env
+        env_file: chal.env
         environment:
-            - CHARACTER=Arthur
+            CHARACTER: Arthur
+        restart: unless-stopped
+        networks:
+            default:
+                ipv4_address: 172.30.0.2
 
     bedevere:
-        extends: arthur
+        <<: *knight
         environment:
-            - CHARACTER=Bedevere
+            CHARACTER: Bedevere
+        networks:
+            default:
+                ipv4_address: 172.30.0.3
 
     robin:
-        extends: arthur
+        <<: *knight
         environment:
-            - CHARACTER=Robin
+            CHARACTER: Robin
+        networks:
+            default:
+                ipv4_address: 172.30.0.4
 
     bridgekeeper:
-        extends: arthur
+        <<: *knight
         environment:
-            - CHARACTER=Bridgekeeper
+            CHARACTER: Bridgekeeper
+        networks:
+            default:
+                ipv4_address: 172.30.0.5
 
     lancelot:
-        extends: arthur
+        <<: *knight
         environment:
-            - CHARACTER=Lancelot
+            CHARACTER: Lancelot
+        networks:
+            default:
+                ipv4_address: 172.30.0.6
 
     galahad:
-        extends: arthur
+        <<: *knight
         environment:
-            - CHARACTER=Galahad
+            CHARACTER: Galahad
+        networks:
+            default:
+                ipv4_address: 172.30.0.7
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28

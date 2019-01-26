@@ -4,10 +4,17 @@ services:
     pwned:
         build: ./pwned
         image: naumachia/scraps.pwned
+        environment:
+            CC_IP: 172.30.0.13
+        networks:
+            default:
+                ipv4_address: 172.30.0.5
         restart: unless-stopped
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28
