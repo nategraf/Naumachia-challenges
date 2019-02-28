@@ -34,11 +34,6 @@ services:
             default:
                 ipv4_address: 172.30.0.3
 
-# To avoid users from using this challenge as a personal VPN gateway to the
-# internet, it is important to specify the default network as internal or using
-# the l2bridge driver which does not support gateway service. (i.e. not
-# connected to the internet)
-
 networks:
     default:
         driver: l2bridge
