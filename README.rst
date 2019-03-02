@@ -12,16 +12,20 @@ The challenges in this repository are challenges I have written for past CTFs an
 this is helpful to developers who are interested in writing their own challenges or just curious as to how it all works.
 
 Challenges:
- * `Stop and Listen <https://github.com/nategraf/Naumachia-challenges/tree/master/listen>`_
- * `Stuck in the Middle <https://github.com/nategraf/Naumachia-challenges/tree/master/middle>`_
- * `Straw House <https://github.com/nategraf/Naumachia-challenges/tree/master/straw>`_
- * `Stick House <https://github.com/nategraf/Naumachia-challenges/tree/master/sticks>`_
- * `Brick House <https://github.com/nategraf/Naumachia-challenges/tree/master/brick>`_
- * `Segal's Law <https://github.com/nategraf/Naumachia-challenges/tree/master/segal>`_
- * `A Rose by Any Other IP <https://github.com/nategraf/Naumachia-challenges/tree/master/rose>`_
- * `Secret Recipe <https://github.com/nategraf/Naumachia-challenges/tree/master/recipe>`_
- * `Open Letter <https://github.com/nategraf/Naumachia-challenges/tree/master/letter>`_
- * `Table Scraps <https://github.com/nategraf/Naumachia-challenges/tree/master/scraps>`_
+ * `Stop and Listen <listen>`_
+ * `Stuck in the Middle <middle>`_
+ * `Straw House <straw>`_
+ * `Stick House <sticks>`_
+ * `Brick House <brick>`_
+ * `Segal's Law <segal>`_
+ * `A Rose by Any Other IP <rose>`_
+ * `Secret Recipe <recipe>`_
+ * `Open Letter <letter>`_
+ * `Table Scraps <scraps>`_
+ * `Calculator <calculator>`_
+ * `Clock <clock>`_
+ * `Homework Help <homework>`_
+ * `AltF4 for Ops <altf4>`_
 
 **Writeups** written by players can be found in the `writeups folder <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups>`_
 

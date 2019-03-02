@@ -54,3 +54,23 @@ challenges:
         port: 2009
         files:
             - letter/docker-compose.yml
+
+    calculator:
+        port: 2010
+        files:
+            - calculator/docker-compose.yml
+
+    clock:
+        port: 2011
+        files:
+            - clock/docker-compose.yml
+
+    homework:
+        port: 2012
+        files:
+            - homework/docker-compose.yml
+
+    altf4:
+        port: 2013
+        files:
+            - altf4/docker-compose.yml
