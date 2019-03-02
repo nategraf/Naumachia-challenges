@@ -1,7 +1,3 @@
-eve: true
-
-domain: naumachia.ddns.net
-
 challenges:
     listen:
         port: 2000
