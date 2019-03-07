@@ -25,11 +25,22 @@ Challenges:
 
 **Writeups** written by players can be found in the `writeups folder <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups>`_
 
-Note:
-    These challenges make use of custom libnetwork (Docker networking) driver including:
-      * `l2bridge <https://github.com/nategraf/l2bridge-driver>`_ - Networking driver focused on providing (only) layer 2 connectivity
-      * `static <https://github.com/nategraf/static-ipam-driver>`_ - IPAM driver designed to work with overlapping and static IP assignemnts
-      * `mini <https://github.com/nategraf/mini-ipam-driver>`_ - IPAM driver designed to allocate small subnets for lots of little networks
+Hosting
+-------
+
+You can host these challenges for your own competition or class with the following steps:
+
+1. Clone `Naumchia <https://github.com/nategraf/naumachia>`_ to your machine (``git clone https://github.com/nategraf/naumachia.git``)
+2. Install the dependencies listed in tHe Naumachia README and the network drivers below.
+2. Clone these challenges into the `challenges` subdirectory. (``git clone https://github.com/nategraf/naumachia-challenges.git naumachia/challenges``)
+3. Copy config.yml into your Naumachia directory.
+4. Run `configure.py`
+5. `sudo docker-compose up`!
+
+These challenges make use of custom libnetwork (Docker networking) driver including:
+  * `l2bridge <https://github.com/nategraf/l2bridge-driver>`_ - Networking driver focused on providing (only) layer 2 connectivity
+  * `static <https://github.com/nategraf/static-ipam-driver>`_ - IPAM driver designed to work with overlapping and static IP assignemnts
+  * `mini <https://github.com/nategraf/mini-ipam-driver>`_ - IPAM driver designed to allocate small subnets for lots of little networks
 
     It is recommended that you install and run these with these challenges and any you write, as they are designed to
     sidestep some of the hair-pulling long days and nights I spent working around the design choices of libnetwork.
