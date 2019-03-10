@@ -70,3 +70,13 @@ challenges:
         port: 2013
         files:
             - altf4/docker-compose.yml
+
+    copper:
+        port: 2014
+        files:
+            - copper/docker-compose.yml
+
+    wordpress:
+        port: 2015
+        files:
+            - wordpress/docker-compose.yml
