@@ -26,7 +26,7 @@ services:
         image: naumachia/apacheword
         hostname: apacheword
         depends_on:
-            - mysqlword
+            - mysql
         networks:
             default:
                 ipv4_address: 172.30.0.3
