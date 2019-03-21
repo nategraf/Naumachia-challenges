@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2.4'
 
 # The file defines the configuration for simple Nauachia challenge where a
 # sucessful man-in-the-middle (MTIM) attack (such as ARP poisoning) provides a

@@ -1,7 +1,17 @@
-version: '2.1'
+version: '2.4'
+
+x-limits: &limits
+    pids_limit: 1024
+    cpu_shares: 256
+    mem_limit: 512m
+    logging:
+        options:
+            max-size: 10m
+            max-file: '3'
 
 services:
     shell:
+        <<: *limits
         build:
             context: ./shell
             args:
@@ -19,6 +29,7 @@ services:
                 ipv4_address: 172.30.0.2
 
     client:
+        <<: *limits
         image: naumachia/login.client
         command: [python, /app/client.py]
         restart: unless-stopped
