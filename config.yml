@@ -1,3 +1,7 @@
+eve: false
+
+domain: naumachiactf.com
+
 challenges:
     listen:
         port: 2000
@@ -49,23 +53,23 @@ challenges:
         files:
             - letter/docker-compose.yml
 
-    calculator:
-        port: 2010
-        files:
-            - calculator/docker-compose.yml
-
-    clock:
-        port: 2011
-        files:
-            - clock/docker-compose.yml
+#    calculator:
+#        port: 2010
+#        files:
+#            - calculator/docker-compose.yml
+#
+#    clock:
+#        port: 2011
+#        files:
+#            - clock/docker-compose.yml
 
     homework:
-        port: 2012
+        port: 2010
         files:
             - homework/docker-compose.yml
 
     altf4:
-        port: 2013
+        port: 2011
         files:
             - altf4/docker-compose.yml
 
