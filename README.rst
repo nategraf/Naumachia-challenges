@@ -26,6 +26,7 @@ Challenges:
  * `Clock <clock>`_
  * `Homework Help <homework>`_
  * `AltF4 for Ops <altf4>`_
+ * `J. Schmidt <schmidt>`_
 
 **Writeups** written by players can be found in the `writeups folder <https://github.com/nategraf/Naumachia-challenges/tree/master/writeups>`_
 

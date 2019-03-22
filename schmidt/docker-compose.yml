@@ -18,7 +18,7 @@ services:
     router:
         <<: *limits
         build: ./router
-        image: naumachia/john.router
+        image: naumachia/schmidt.router
         hostname: router.schmidt.naum
         networks:
             default:
@@ -33,7 +33,7 @@ services:
         <<: *limits
         hostname: ns.schmidt.naum
         build: ./ns
-        image: naumachia/john.ns
+        image: naumachia/schmidt.ns
         networks:
             default:
                 ipv4_address: 172.30.0.2
@@ -45,7 +45,7 @@ services:
     web:
         <<: *limits
         build: ./web
-        image: naumachia/john.web
+        image: naumachia/schmidt.web
         hostname: john.jacob.jingleheimer.schmidt.naum
         networks:
             hidden:
@@ -57,7 +57,7 @@ services:
     client:
         <<: *limits
         build: ./client
-        image: naumachia/john.client
+        image: naumachia/schmidt.client
         hostname: client.schmidt.naum
         dns: 172.30.0.2
         networks:

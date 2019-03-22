@@ -29,12 +29,10 @@ challenges:
         files:
             - segal/docker-compose.yml
 
-# Rose need some work. It currently eats up too many resources and is poorly constructed.
-#    rose:
-#        port: 2006
-#        files:
-#            - rose/docker-compose.yml
-#            - common/docker-compose.yml
+    schmidt:
+        port: 2006
+        files:
+            - schmidt/docker-compose.yml
         
     scraps:
         port: 2007
