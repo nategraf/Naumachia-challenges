@@ -9,6 +9,11 @@ x-limits: &limits
             max-size: 10m
             max-file: '3'
 
+x-secrets: &secrets
+    USERNAME: jjjs
+    PASSWORD: p*SSw0rd
+    CTF_FLAG: flag{his_domain_name_is_my_name_too}
+
 services:
     router:
         <<: *limits
@@ -37,30 +42,31 @@ services:
             ZONE_HOSTS: john.jacob.jingleheimer=172.30.35.2
         restart: unless-stopped
 
-#    web:
-#        <<: *limits
-#        build: ./web
-#        image: naumachia/john.web
-#        hostname: john.jacob.jingleheimer.schmidt.naum
-#        networks:
-#            hidden:
-#                ipv4_address: 172.30.35.2
-#        environment:
-#            CTF_FLAG: flag{his_domain_name_is_my_name_too}
-#        restart: unless-stopped
+    web:
+        <<: *limits
+        build: ./web
+        image: naumachia/john.web
+        hostname: john.jacob.jingleheimer.schmidt.naum
+        networks:
+            hidden:
+                ipv4_address: 172.30.35.2
+        environment:
+            <<: *secrets
+        restart: unless-stopped
 
-#    client:
-#        <<: *limits
-#        build: ./client
-#        image: naumachia/john.client
-#        hostname: client.schmidt.naum
-#        networks:
-#            hidden:
-#                ipv4_address: 172.30.35.3
-#        environment:
-#            USERNAME: jjjs
-#            PASSWORD: p@SSw0rd
-#        restart: unless-stopped
+    client:
+        <<: *limits
+        build: ./client
+        image: naumachia/john.client
+        hostname: client.schmidt.naum
+        dns: 172.30.0.2
+        networks:
+            hidden:
+                ipv4_address: 172.30.35.3
+        environment:
+            <<: *secrets
+            WEB_URL: http://john.jacob.jingleheimer.schmidt.naum
+        restart: unless-stopped
 
 networks:
     default:
