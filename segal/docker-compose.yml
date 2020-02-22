@@ -1,13 +1,24 @@
-version: '2.1'
+version: '2.4'
+
+x-limits: &limits
+    pids_limit: 1024
+    cpu_shares: 256
+    mem_limit: 512m
+    logging:
+        options:
+            max-size: 10m
+            max-file: '3'
 
 services:
     catfacts:
-        build: ./catfacts/build
-        image: naumachia/ntp-rollback.catfacts
+        <<: *limits
+        build: ./catfacts
+        image: naumachia/segal.catfacts
         networks:
             default:
                 aliases:
                     - "catfacts.naum"
+                ipv4_address: 172.30.0.2
         expose: 
             - "443"
         env_file: chal.env
@@ -18,32 +29,38 @@ services:
         restart: unless-stopped
 
     ntpproxy:
+        <<: *limits
         build: ./udpproxy
-        image: naumachia/udpproxy
+        image: naumachia/segal.udpproxy
         expose:
             - 123/udp
         networks:
             default:
                 aliases:
                     - "time.naum"
+                ipv4_address: 172.30.0.3
             external:
         command: ["udpproxy", "--bind-address=0.0.0.0", "--port=123", "--dst-ip=time.google.com", "--dst-port=123"]
         restart: unless-stopped
 
     client:
-        build: ./client/build
-        image: naumachia/ntp-rollback.client
+        <<: *limits
+        build: ./client
+        image: naumachia/segal.client
         env_file: chal.env
         command: [python, /app/client.py]
-        tty: true
-        stdin_open: true
         restart: unless-stopped
+        networks:
+            default:
+                ipv4_address: 172.30.0.4
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28
 
     # Internet access for ntp service
     external:

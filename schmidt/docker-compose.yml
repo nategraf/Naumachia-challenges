@@ -1,0 +1,88 @@
+version: '2.4'
+
+x-limits: &limits
+    pids_limit: 1024
+    cpu_shares: 256
+    mem_limit: 512m
+    logging:
+        options:
+            max-size: 10m
+            max-file: '3'
+
+x-secrets: &secrets
+    USERNAME: jjjs
+    PASSWORD: p*SSw0rd
+    CTF_FLAG: flag{his_domain_name_is_my_name_too}
+
+services:
+    router:
+        <<: *limits
+        build: ./router
+        image: naumachia/schmidt.router
+        hostname: router.schmidt.naum
+        networks:
+            default:
+                ipv4_address: 172.30.0.1
+            hidden:
+                ipv4_address: 172.30.35.1
+        sysctls:
+            net.ipv4.ip_forward: 1
+        restart: unless-stopped
+
+    ns:
+        <<: *limits
+        hostname: ns.schmidt.naum
+        build: ./ns
+        image: naumachia/schmidt.ns
+        networks:
+            default:
+                ipv4_address: 172.30.0.2
+        environment:
+            ZONE_DOMAIN: schmidt.naum
+            ZONE_HOSTS: john.jacob.jingleheimer=172.30.35.2
+        restart: unless-stopped
+
+    web:
+        <<: *limits
+        build: ./web
+        image: naumachia/schmidt.web
+        hostname: john.jacob.jingleheimer.schmidt.naum
+        networks:
+            hidden:
+                ipv4_address: 172.30.35.2
+        environment:
+            <<: *secrets
+        restart: unless-stopped
+
+    client:
+        <<: *limits
+        build: ./client
+        image: naumachia/schmidt.client
+        hostname: client.schmidt.naum
+        dns: 172.30.0.2
+        networks:
+            hidden:
+                ipv4_address: 172.30.35.3
+        environment:
+            <<: *secrets
+            WEB_URL: http://john.jacob.jingleheimer.schmidt.naum
+        restart: unless-stopped
+
+networks:
+    default:
+        driver: l2bridge
+        ipam:
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28
+        driver_opts:
+            l2bridge.gateway: 172.30.0.1
+
+    hidden:
+        driver: l2bridge
+        ipam:
+            driver: static
+            config:
+                - subnet: 172.30.35.0/28
+        driver_opts:
+            l2bridge.gateway: 172.30.35.1

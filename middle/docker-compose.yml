@@ -1,17 +1,34 @@
-version: '2.1'
+version: '2.4'
+
+x-limits: &limits
+    pids_limit: 1024
+    cpu_shares: 256
+    mem_limit: 512m
+    logging:
+        options:
+            max-size: 10m
+            max-file: '3'
 
 services:
     bob:
+        <<: *limits
         build: ./bob
         image: naumachia/mitm.bob
         restart: unless-stopped
+        networks:
+            default:
+                ipv4_address: 172.30.0.2
         environment:
             - CTF_FLAG=i_gOT_the_FeELIN_SoMEThinG_ainT_rIGHt
 
     alice:
+        <<: *limits
         build: ./alice
         image: naumachia/mitm.alice
         restart: unless-stopped
+        networks:
+            default:
+                ipv4_address: 172.30.0.3
         depends_on:
             - bob
         environment:
@@ -19,6 +36,8 @@ services:
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28

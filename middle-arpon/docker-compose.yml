@@ -1,32 +1,49 @@
-version: '2.1'
+version: '2.4'
+
+x-limits: &limits
+    pids_limit: 1024
+    cpu_shares: 256
+    mem_limit: 512m
+    logging:
+        options:
+            max-size: 10m
+            max-file: '3'
 
 services:
     bob:
+        <<: *limits
         build: ./bob
-        image: naumachia/mitm-arpon/bob
+        image: naumachia/middle-arpon.bob
         volumes:
             - arpon:/etc/arpon
         environment:
-            - CTF_FLAG=67afB27edB18Fe33
+            - CTF_FLAG=MORe_ThAn_ONE_WAy_tO_sKin_A_cAT
         sysctls:
             net.ipv4.conf.eth0.arp_ignore: 8
             net.ipv4.conf.eth0.arp_accept: 0
+        networks:
+            default:
+                ipv4_address: 172.30.0.2
         cap_add:
             - NET_ADMIN
             - NET_RAW
 
     alice:
+        <<: *limits
         build: ./alice
-        image: naumachia/mitm-arpon/alice
+        image: naumachia/middle-arpon.alice
         volumes:
             - arpon:/etc/arpon
         depends_on:
             - bob
         environment:
-            - CTF_FLAG=67afB27edB18Fe33
+            - CTF_FLAG=MORe_ThAn_ONE_WAy_tO_sKin_A_cAT
         sysctls:
             net.ipv4.conf.eth0.arp_ignore: 8
             net.ipv4.conf.eth0.arp_accept: 0
+        networks:
+            default:
+                ipv4_address: 172.30.0.3
         cap_add:
             - NET_ADMIN
             - NET_RAW
@@ -36,6 +53,8 @@ volumes:
 
 networks:
     default:
-        internal: true
+        driver: l2bridge
         ipam:
-            driver: mini
+            driver: static
+            config:
+                - subnet: 172.30.0.0/28
