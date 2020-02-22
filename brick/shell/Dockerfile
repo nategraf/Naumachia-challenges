@@ -14,11 +14,11 @@ RUN apt-get -y remove automake build-essential && \
     apt-get -y autoremove
 
 # SET UP ENV
-ARG USERNAME=noob 
-ARG PASSWORD=noob 
-ARG NAUMOTP_SECRET=secret_key
-ARG SANDBOX_REPO=https://github.com/nategraf/wrastle.git
-ARG CTF_FLAG=flag{houses_made_of_sticks_are_hardly_better}
+ARG USERNAME
+ARG PASSWORD
+ARG NAUMOTP_SECRET
+ARG SANDBOX_REPO
+ARG CTF_FLAG
 
 RUN useradd -Um $USERNAME && \
     printf "${PASSWORD}\n${PASSWORD}\n" | passwd $USERNAME
