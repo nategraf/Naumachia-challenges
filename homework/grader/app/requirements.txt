@@ -1,2 +1,2 @@
-pika
-pytest
+pika==1.1.*
+pytest==5.3.*
