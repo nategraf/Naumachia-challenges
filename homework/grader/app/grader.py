@@ -14,6 +14,7 @@ import pwd
 import select
 import shutil
 import signal
+import ssl
 import subprocess
 import sys
 import threading
@@ -21,7 +22,6 @@ import time
 
 MQ_SERVER = os.environ.get("MQ_SERVER", "localhost")
 MQ_PORT = int(os.environ.get("MQ_PORT", 5671))
-MQ_SSL = os.environ.get("MQ_SSL", "true").lower() == "true"
 CA_CERT = os.environ.get("CA_CERT", None)
 LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO').upper()
 TASK_GROUP = os.environ.get('TASK_GROUP', 'student')
@@ -31,7 +31,7 @@ logger = logging.getLogger('grader')
 logger.setLevel(LOG_LEVEL)
 
 STDOUT = "stdout"
-STDERR = "stderr" 
+STDERR = "stderr"
 
 def setup_user(user):
     try:
@@ -93,7 +93,7 @@ class Task:
     def kill(self):
         if self.proc:
             self.proc.kill()
-    
+
     def wait(self):
         if self.proc:
             self.proc.wait()
@@ -174,7 +174,7 @@ class Grader:
                     ret = ret
                 )
                 self.tasks.pop(id)
-        
+
         updates = {}
         for fd, event in self.epoll.poll(timeout):
             task, stream = self.filenums[fd]
@@ -238,7 +238,7 @@ class Grader:
         except OSError as err:
             logger.error("failed to register %s: %r", task.id, err)
             return
-        
+
         try:
             os.set_blocking(task.stderr.fileno(), False)
             self.epoll.register(task.stderr, EPOLLIN)
@@ -254,7 +254,7 @@ class Grader:
 
     def stop(self):
         self._closing.set()
-        
+
 def main():
     # Ensure the group for new users exists.
     try:
@@ -263,15 +263,15 @@ def main():
         subprocess.run(('addgroup', TASK_GROUP), check=True)
         logger.info("created user group %s", TASK_GROUP)
 
-    if MQ_SSL:
-        ssl_opts = {'ca_certs': CA_CERT}
+    if CA_CERT:
+        ssl_opts = pika.SSLOptions(ssl.SSLContext())
+        ssl_opts.context.load_verify_locations(cafile=CA_CERT)
     else:
         ssl_opts = None
 
     conn = pika.BlockingConnection(pika.ConnectionParameters(
         host=MQ_SERVER,
         port=MQ_PORT,
-        ssl=MQ_SSL,
         ssl_options=ssl_opts,
         heartbeat=0,
         blocked_connection_timeout=60,
