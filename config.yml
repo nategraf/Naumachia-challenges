@@ -3,78 +3,94 @@ challenges:
         port: 2000
         files:
             - listen/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     middle:
         port: 2001
         files:
             - middle/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     straw:
         port: 2002
         files:
             - straw/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     sticks:
         port: 2003
         files:
             - sticks/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     brick:
         port: 2004
         files:
             - brick/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     segal:
         port: 2005
         files:
             - segal/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     schmidt:
         port: 2006
         files:
             - schmidt/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
         
     scraps:
         port: 2007
         files:
             - scraps/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     recipe:
         port: 2008
         files:
             - recipe/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     letter:
         port: 2009
         files:
             - letter/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     calculator:
         port: 2010
         files:
             - calculator/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     clock:
         port: 2011
         files:
             - clock/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     homework:
         port: 2012
         files:
             - homework/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     altf4:
         port: 2013
         files:
             - altf4/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     copper:
         port: 2014
         files:
             - copper/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
 
     wordpress:
         port: 2015
         files:
             - wordpress/docker-compose.yml
+        ifconfig_push: 172.30.0.14/28
