@@ -1,4 +1,4 @@
-FROM sameersbn/bind:9.9.5-20161106
+FROM sameersbn/bind:9.16.1-20200524
 
 COPY ./requirements.txt ./requirements.txt
 
@@ -7,6 +7,7 @@ RUN apt-get update && \
     pip3 install -r requirements.txt && \
     rm -rf /var/lib/apt/lists/*
 
+WORKDIR /var/cache/bind
 COPY zonerender.py /usr/bin/
 COPY zone.j2 named.conf.j2 ./
 
