@@ -19,6 +19,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
+        mac_address: 2e:45:99:c7:82:4b
         restart: unless-stopped
 
     alice:
@@ -32,6 +33,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
+        mac_address: 2e:70:27:20:ac:ca
         restart: unless-stopped
 
 networks:

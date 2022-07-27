@@ -18,6 +18,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
+        mac_address: 2e:7d:0b:ad:53:99
         environment:
             - CTF_FLAG=i_gOT_the_FeELIN_SoMEThinG_ainT_rIGHt
 
@@ -29,6 +30,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
+        mac_address: 2e:97:b6:ac:07:3c
         depends_on:
             - bob
         environment:

@@ -27,6 +27,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
+        mac_address: 2e:56:be:7f:7f:4d
 
     client:
         <<: *limits
@@ -39,6 +40,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
+        mac_address: 2e:2b:40:f8:65:82
 
 networks:
     default:

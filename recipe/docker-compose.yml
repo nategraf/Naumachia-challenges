@@ -20,6 +20,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
+        mac_address: 2e:03:10:cf:b3:ea
         restart: unless-stopped
 
     ftp:
@@ -37,6 +38,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
+        mac_address: 2e:e7:80:8c:0a:f8
         restart: unless-stopped
 
 networks:

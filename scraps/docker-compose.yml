@@ -19,6 +19,7 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.5
+        mac_address: 2e:37:61:a7:71:ad
         restart: unless-stopped
 
 networks:
