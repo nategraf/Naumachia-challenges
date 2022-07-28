@@ -18,7 +18,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:c9:02:05:f4:92
         environment:
             MQ_SERVER: queue
         restart: unless-stopped
@@ -31,7 +30,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        mac_address: 2e:c7:fc:87:19:98
         environment:
             MQ_SERVER: queue
         restart: unless-stopped
@@ -44,7 +42,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.4
-        mac_address: 2e:e1:18:d0:c6:96
         restart: unless-stopped
 
 networks:

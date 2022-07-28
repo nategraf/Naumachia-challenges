@@ -18,7 +18,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:31:9e:67:05:7e
         restart: unless-stopped
 
     apache:
@@ -31,7 +30,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        mac_address: 2e:c8:81:27:78:d9
         restart: unless-stopped
 
 

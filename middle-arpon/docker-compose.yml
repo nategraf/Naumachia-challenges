@@ -24,7 +24,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:a5:08:0e:d9:a3
         cap_add:
             - NET_ADMIN
             - NET_RAW
@@ -45,7 +44,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        mac_address: 2e:4a:58:b2:09:cb
         cap_add:
             - NET_ADMIN
             - NET_RAW

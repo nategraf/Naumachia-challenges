@@ -24,7 +24,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:5d:42:06:0d:bc
         expose:
             - "23"
         cap_add:
@@ -41,7 +40,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        mac_address: 2e:22:06:75:01:cf
         restart: unless-stopped
 
 networks:

@@ -21,7 +21,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:65:7e:3e:cc:e6
 
     bedevere:
         <<: *knight
@@ -30,7 +29,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        mac_address: 2e:29:a2:e0:fe:f1
 
     robin:
         <<: *knight
@@ -39,7 +37,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.4
-        mac_address: 2e:90:b9:24:c4:c6
 
     bridgekeeper:
         <<: *knight
@@ -48,7 +45,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.5
-        mac_address: 2e:94:12:b7:8f:a1
 
     lancelot:
         <<: *knight
@@ -57,7 +53,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.6
-        mac_address: 2e:f4:71:c2:26:6c
 
     galahad:
         <<: *knight
@@ -66,7 +61,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.7
-        mac_address: 2e:e0:f7:04:95:a9
 
 networks:
     default:

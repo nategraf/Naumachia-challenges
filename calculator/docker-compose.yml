@@ -24,7 +24,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:99:1d:71:d1:bc
         restart: unless-stopped
 
     client:
@@ -37,7 +36,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        mac_address: 2e:bb:44:12:fd:00
         restart: unless-stopped
 
 networks:

@@ -21,7 +21,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:d1:7a:68:68:a1
 
     alice:
         build: ./alice
@@ -34,7 +33,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        mac_address: 2e:27:4a:19:e7:39
 
 networks:
     default:

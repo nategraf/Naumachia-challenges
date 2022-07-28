@@ -19,7 +19,6 @@ services:
                 aliases:
                     - "catfacts.naum"
                 ipv4_address: 172.30.0.2
-        mac_address: 2e:7b:14:c3:25:41
         expose: 
             - "443"
         env_file: chal.env
@@ -54,7 +53,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.4
-        mac_address: 2e:50:2c:b8:6f:6e
 
 networks:
     default:
