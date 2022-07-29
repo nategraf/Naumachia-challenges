@@ -239,30 +239,35 @@ if __name__ == "__main__":
     logging.info("Telnet shell host is '{0}'".format(HOST))
 
     while True:
-        # Waiting a bit
-        start_delay = 10
-        if start_delay > 0:
-            logging.info("Waiting {} seconds to start".format(start_delay))
-            sleep(start_delay)
+        try:
+            # Waiting a bit
+            start_delay = 10
+            if start_delay > 0:
+                logging.info("Waiting {} seconds to start".format(start_delay))
+                sleep(start_delay)
 
-        with TelnetClient(HOST, USER, PASSWD, naumotp_secret=NAUMOTP_SECRET) as shell:
-            delay()
+            with TelnetClient(HOST, USER, PASSWD, naumotp_secret=NAUMOTP_SECRET) as shell:
+                delay()
 
-            shell.login()
-
-            delay()
-
-            for _ in range(ACTION_COUNT):
-                files = shell.ls()
+                shell.login()
 
                 delay()
 
-                next = random.choice(list(file_filter(files, shell.cwd)))
-                if next.is_directory:
-                    shell.cd(next.name)
-                    logging.info("cd to " + str(next))
-                else:
-                    shell.cat(next.name)
-                    logging.info("cat " + str(next))
+                for _ in range(ACTION_COUNT):
+                    files = shell.ls()
 
-                delay()
+                    delay()
+
+                    next = random.choice(list(file_filter(files, shell.cwd)))
+                    if next.is_directory:
+                        shell.cd(next.name)
+                        logging.info("cd to " + str(next))
+                    else:
+                        shell.cat(next.name)
+                        logging.info("cat " + str(next))
+
+                    delay()
+        # Catch and continue on any exception to avoid the need to recreate the container.
+        # Main reason for this is to avoid changing the MAC address.
+        except Exception as err:
+            logging.exception("Exception in the main loop")
