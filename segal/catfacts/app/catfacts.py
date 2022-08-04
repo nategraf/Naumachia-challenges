@@ -1,11 +1,12 @@
 from flask import Flask, render_template, flash, redirect
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
 from flask_wtf import FlaskForm
-from wtforms import TextField, PasswordField
-from wtforms.validators import DataRequired
 from os import path, environ
-import random
+from wtforms import StringField, PasswordField
+from wtforms.validators import DataRequired
 import json
+import logging
+import random
 
 script_dir = path.dirname(__file__)
 
@@ -21,13 +22,34 @@ ctf_flag            = environ.get("CTF_FLAG")
 cert_path           = environ.get("CERT_PATH", "/etc/ssl/localhost.crt")
 key_path            = environ.get("KEY_PATH", "/etc/ssl/localhost.key")
 
+logging.config.dictConfig(
+    {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "default": {
+                "format": "[%(asctime)s] [%(process)d] [%(levelname)s] in %(module)s: %(message)s",
+                "datefmt": "%Y-%m-%d %H:%M:%S %z"
+            }
+        },
+        "handlers": {
+            "wsgi": {
+                "class": "logging.StreamHandler",
+                "stream": "ext://flask.logging.wsgi_errors_stream",
+                "formatter": "default",
+            }
+        },
+        "root": {"level": "DEBUG", "handlers": ["wsgi"]},
+    }
+)
+
 class LonelyUser(UserMixin):
     id = catfact_pass
 
 lonely_user = LonelyUser()
 
 class LoginForm(FlaskForm):
-    user = TextField('Username', validators=[DataRequired()])
+    user = StringField('Username', validators=[DataRequired()])
     passwd = PasswordField('Password', validators=[DataRequired()])
 
 @login_manager.user_loader
@@ -78,15 +100,15 @@ def login():
         flash('Please enter your credentials')
 
     if sucess:
-        return redirect("#")
+        return redirect("/#")
     else:
-        return redirect("#login")
+        return redirect("/#login")
 
 @app.route('/logout', methods=('GET',))
 @login_required
 def logout():
     logout_user()
-    return redirect('#')
+    return redirect('/#')
 
 
 @app.route('/')
@@ -94,7 +116,7 @@ def hello_world():
     num, fact, exclamation = thefacts.random()
     form = LoginForm()
     return render_template(
-            'fact.html', 
+            'fact.html',
             fact=fact,
             num=num,
             exclamation=exclamation,

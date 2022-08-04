@@ -28,19 +28,18 @@ services:
         command: ["gunicorn", "-c", "python:config", "catfacts:app"]
         restart: unless-stopped
 
-    ntpproxy:
+    ntp:
         <<: *limits
-        build: ./udpproxy
-        image: naumachia/segal.udpproxy
+        image: cturra/ntp:latest
         expose:
             - 123/udp
+        environment:
+            NTP_SERVERS: 127.127.1.1
         networks:
             default:
                 aliases:
                     - "time.naum"
                 ipv4_address: 172.30.0.3
-            external:
-        command: ["udpproxy", "--bind-address=0.0.0.0", "--port=123", "--dst-ip=time.google.com", "--dst-port=123"]
         restart: unless-stopped
 
     client:
@@ -61,8 +60,3 @@ networks:
             driver: static
             config:
                 - subnet: 172.30.0.0/28
-
-    # Internet access for ntp service
-    external:
-        ipam:
-            driver: mini

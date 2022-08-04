@@ -42,7 +42,7 @@ if __name__ == "__main__":
                 urllib3.disable_warnings()
                 sess.mount('https:', NaumHTTPAdapter())
                 sess.verify = cacert
-                
+
                 last_resp = None
                 tree = None
 
@@ -60,15 +60,23 @@ if __name__ == "__main__":
                 if not tree:
                     tree = etree.parse(io.StringIO(last_resp.text), etree.HTMLParser())
 
-                csrf_token = tree.xpath('//form[@action="/login"]/input[@name="csrf_token"]')[0].get('value')
-                creds = {
-                    "user": user,
-                    "passwd": passwd, 
-                    "csrf_token": csrf_token
-                }
-                
+                # If there is a CRSF token, include it in the form.
+                try:
+                    csrf_token = tree.xpath('//form[@action="/login"]/input[@name="csrf_token"]')[0].get('value')
+                    creds = {
+                        "user": user,
+                        "passwd": passwd,
+                        "csrf_token": csrf_token
+                    }
+                except Exception as err:
+                    print("Got error trying to get CSRF token", err)
+                    creds = {
+                        "user": user,
+                        "passwd": passwd,
+                    }
+
                 print("POST {}".format("{}/login".format(url)))
-                sess.post("{}/login".format(url), data=creds, timeout=http_timeout).raise_for_status()
+                sess.post(url="{}/login".format(url), data=creds, timeout=http_timeout).raise_for_status()
                 delay()
 
                 print("GET {}".format(url))
