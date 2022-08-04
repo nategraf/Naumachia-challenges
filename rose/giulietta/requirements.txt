@@ -1,4 +1,0 @@
-Flask==0.12.2
-Flask-Login==0.4.1
-Flask-WTF==0.14.2
-gunicorn==19.7.1
