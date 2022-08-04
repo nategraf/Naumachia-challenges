@@ -1,7 +1,7 @@
 FROM debian
 
 ARG IRCD_REPO_URL=https://github.com/ircd-hybrid/ircd-hybrid.git
-ARG IRCD_REPO_CHECKOUT=8.2
+ARG IRCD_REPO_CHECKOUT=8.2.41
 ARG IRCD_OPTIONS=--prefix=/usr/ircd
 
 COPY ./make-ircd.sh ./make-ircd.sh
