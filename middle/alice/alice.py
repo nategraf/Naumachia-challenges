@@ -1,9 +1,8 @@
 import socket
-import string
 from time import sleep
-import random
 import os
 import sys
+import math
 
 UDP_IP = 'bob'
 UDP_PORT = 5005
@@ -12,30 +11,21 @@ flag = os.environ['CTF_FLAG']
 
 print("UDP target IP:", UDP_IP)
 print("UDP target port:", UDP_PORT)
-print("message:", flag)
+print("flag:", flag)
 sys.stdout.flush()
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-def random_case(str):
-    res = []
-    if str:
-        mask = random.getrandbits(len(str))
-        for i, chr in enumerate(str):
-            if mask & 1 << i:
-                res.append(chr.upper())
-            else:
-                res.append(chr.lower())
-    return ''.join(res)
-
 while True:
-    if random.random() < 0.9:
-        msg = random_case(flag)
-    else:
-        msg = flag
+    first_half = flag[:math.floor(len(flag)/2)]
+    last_half = flag[math.floor(len(flag)/2):]
 
     try:
-        sock.sendto(("Is this the flag? flag{{{0}}}".format(msg)).encode('utf-8'), (UDP_IP, UDP_PORT))
+        message = ("Hey Bob, I think I have half the flag here. "
+                   f"Is this right? flag{{{first_half}")
+        print(f"Sending message to {(UDP_IP, UDP_PORT)!r}: {message!r}")
+
+        sock.sendto(message.encode('utf-8'), (UDP_IP, UDP_PORT))
     except Exception as e:
         print(e)
         pass

@@ -19,7 +19,7 @@ services:
             default:
                 ipv4_address: 172.30.0.2
         environment:
-            - CTF_FLAG=i_gOT_the_FeELIN_SoMEThinG_ainT_rIGHt
+            - CTF_FLAG=i_got_the_feelin_something_aint_right
 
     alice:
         <<: *limits
@@ -32,7 +32,7 @@ services:
         depends_on:
             - bob
         environment:
-            - CTF_FLAG=i_gOT_the_FeELIN_SoMEThinG_ainT_rIGHt
+            - CTF_FLAG=i_got_the_feelin_something_aint_right
 
 networks:
     default:
