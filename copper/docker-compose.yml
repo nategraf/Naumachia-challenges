@@ -19,7 +19,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.2
-        restart: unless-stopped
 
     alice:
         <<: *limits
@@ -32,7 +31,6 @@ services:
         networks:
             default:
                 ipv4_address: 172.30.0.3
-        restart: unless-stopped
 
 networks:
     default:

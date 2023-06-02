@@ -1,4 +1,4 @@
-FROM python:stretch
+FROM python:3.10-bullseye
 
 RUN apt-get update && \
     apt-get install -y nmap libpcap0.8 bash netcat
