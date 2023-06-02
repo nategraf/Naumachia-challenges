@@ -1,4 +1,4 @@
-FROM debian
+FROM python:3.10-bullseye
 
 ARG IRCD_REPO_URL=https://github.com/ircd-hybrid/ircd-hybrid.git
 ARG IRCD_REPO_CHECKOUT=8.2.41
