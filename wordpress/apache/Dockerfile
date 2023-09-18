@@ -19,8 +19,7 @@ RUN apt-get -qy install wget ed sed curl apache2 mysql-server php5-mysql php5 li
 RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf
 
 # extract wordpress
-ADD https://wordpress.org/latest.tar.gz /wordpress.tar.gz
-#COPY latest.tar.gz /wordpress.tar.gz
+COPY ./wordpress-5.1.15.tar.gz /wordpress.tar.gz
 RUN rm -rf /var/www/
 RUN tar xvzf /wordpress.tar.gz
 RUN mv /wordpress /var/www/
